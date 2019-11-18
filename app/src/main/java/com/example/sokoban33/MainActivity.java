@@ -21,10 +21,12 @@ public class MainActivity extends AppCompatActivity {
                 float y = motionEvent.getY();
                 float width = view.getWidth();
                 float height = view.getHeight();
+
                 Log.d("getX", Float.toString(x));
                 Log.d("getY", Float.toString(y));
                 Log.d("sizeX", Float.toString(width));
                 Log.d("sizey", Float.toString(height));
+
                 return false;
             }
         });
