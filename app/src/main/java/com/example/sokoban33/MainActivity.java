@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
                 float y = motionEvent.getY();
                 Log.d("getX", Float.toString(x));
                 Log.d("getY", Float.toString(y));
+                Log.d("sizeX", Float.toString(view.getWidth()));
+                Log.d("sizey", Float.toString(view.getHeight()));
                 return false;
             }
         });
