@@ -27,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("sizeX", Float.toString(width));
                 Log.d("sizey", Float.toString(height));
 
+                if (y < height * 0.25) {
+                    Log.d("touchPos", "top");
+                } else if (y > height * 0.75) {
+                    Log.d("touchPos", "bottom");
+                } else if (x < width / 2) {
+                    Log.d("touchPos", "left");
+                } else {
+                    Log.d("touchPos", "right");
+                }
+
                 return false;
             }
         });
