@@ -80,4 +80,20 @@ public class SokoView extends View{
         }
 
     }
+
+    public boolean moveTop() {
+        return true;
+    }
+
+    public boolean moveBottom() {
+        return true;
+    }
+
+    public boolean moveLeft() {
+        return true;
+    }
+
+    public boolean moveRight() {
+        return true;
+    }
 }
