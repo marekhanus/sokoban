@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SokoView sokoView = findViewById(R.id.sokoView);
+        final SokoView sokoView = findViewById(R.id.sokoView);
         sokoView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -29,12 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
                 if (y < height * 0.25) {
                     Log.d("touchPos", "top");
+                    sokoView.moveTop();
                 } else if (y > height * 0.75) {
                     Log.d("touchPos", "bottom");
+                    sokoView.moveBottom();
                 } else if (x < width / 2) {
                     Log.d("touchPos", "left");
+                    sokoView.moveLeft();
                 } else {
                     Log.d("touchPos", "right");
+                    sokoView.moveRight();
                 }
 
                 return false;
