@@ -19,10 +19,12 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 float x = motionEvent.getX();
                 float y = motionEvent.getY();
+                float width = view.getWidth();
+                float height = view.getHeight();
                 Log.d("getX", Float.toString(x));
                 Log.d("getY", Float.toString(y));
-                Log.d("sizeX", Float.toString(view.getWidth()));
-                Log.d("sizey", Float.toString(view.getHeight()));
+                Log.d("sizeX", Float.toString(width));
+                Log.d("sizey", Float.toString(height));
                 return false;
             }
         });
