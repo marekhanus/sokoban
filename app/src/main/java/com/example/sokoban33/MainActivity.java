@@ -17,8 +17,10 @@ public class MainActivity extends AppCompatActivity {
         sokoView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                Log.d("getX", Float.toString(motionEvent.getX()));
-                Log.d("getY", Float.toString(motionEvent.getY()));
+                float x = motionEvent.getX();
+                float y = motionEvent.getY();
+                Log.d("getX", Float.toString(x));
+                Log.d("getY", Float.toString(y));
                 return false;
             }
         });
