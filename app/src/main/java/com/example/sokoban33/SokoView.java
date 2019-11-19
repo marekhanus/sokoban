@@ -146,6 +146,9 @@ public class SokoView extends View{
         }
 
         // set new cat location
+        if (level[index + offset] == 3) {
+            standingOnGoal = true;
+        }
         level[index + offset] = 4;
 
         invalidate();
