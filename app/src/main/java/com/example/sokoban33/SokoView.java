@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -85,7 +86,7 @@ public class SokoView extends View{
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
                 if (level[i*10 + j] == 4) {
-                    break;
+                    Log.d("catch", "YES!");
                 }
             }
         }
