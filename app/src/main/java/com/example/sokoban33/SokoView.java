@@ -98,8 +98,12 @@ public class SokoView extends View{
             return false;
         }
 
-        level[index] = 0;
-        level[index + offset] = 4;
+        try {
+            level[index] = 0;
+            level[index + offset] = 4;
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
 
         invalidate();
 
