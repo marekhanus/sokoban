@@ -122,6 +122,14 @@ public class SokoView extends View{
             return false;
         }
 
+        // restore block on old cat location
+        if (standingOnGoal) {
+            level[index] = 3;
+            standingOnGoal = false;
+        } else {
+            level[index] = 0;
+        }
+
         // if in destination is box or green box then move it
         if (level[index + offset] == 2 || level[index + offset] == 5) {
             // check if box destination is in area range
@@ -140,14 +148,6 @@ public class SokoView extends View{
             } else {
                 level[index + offset * 2] = 2;
             }
-        }
-
-        // restore block on old cat location
-        if (standingOnGoal) {
-            level[index] = 3;
-            standingOnGoal = false;
-        } else {
-            level[index] = 0;
         }
 
         // set new cat location
