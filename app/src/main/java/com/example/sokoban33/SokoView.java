@@ -88,8 +88,8 @@ public class SokoView extends View{
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
                 if (level[i*10 + j] == 4) {
-                    Log.d("catch", "YES!");
                     index = i*10 + j;
+                    Log.d("catch", String.valueOf(index));
                 }
             }
         }
