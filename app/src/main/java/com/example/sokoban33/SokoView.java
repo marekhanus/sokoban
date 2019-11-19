@@ -82,7 +82,7 @@ public class SokoView extends View{
 
     }
 
-    protected boolean move() {
+    protected boolean move(int offset) {
         Integer index = null;
 
         for (int i = 0; i < lx; i++) {
@@ -99,7 +99,7 @@ public class SokoView extends View{
         }
 
         level[index] = 0;
-        level[index + 1] = 4;
+        level[index + offset] = 4;
 
         invalidate();
 
@@ -119,6 +119,6 @@ public class SokoView extends View{
     }
 
     public boolean moveRight() {
-        return move();
+        return move(1);
     }
 }
