@@ -83,7 +83,7 @@ public class SokoView extends View{
     }
 
     protected boolean move() {
-        int index = 0;
+        Integer index = null;
 
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
@@ -92,6 +92,10 @@ public class SokoView extends View{
                     index = i*10 + j;
                 }
             }
+        }
+
+        if (index == null) {
+            return false;
         }
 
         return true;
