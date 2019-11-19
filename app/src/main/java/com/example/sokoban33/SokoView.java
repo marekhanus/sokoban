@@ -122,6 +122,11 @@ public class SokoView extends View{
 
         // if in destination is box then move it
         if (level[index + offset] == 2) {
+            // check if box destination is in area range
+            if (index + offset * 2 < 0 || index + offset * 2 >= 10 * 10) {
+                return false;
+            }
+
             level[index + offset * 2] = 2;
         }
 
