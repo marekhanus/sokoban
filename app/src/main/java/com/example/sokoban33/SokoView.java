@@ -98,6 +98,9 @@ public class SokoView extends View{
             return false;
         }
 
+        level[index] = 0;
+        level[index + 1] = 4;
+
         invalidate();
 
         return true;
@@ -116,6 +119,6 @@ public class SokoView extends View{
     }
 
     public boolean moveRight() {
-        return true;
+        return move();
     }
 }
