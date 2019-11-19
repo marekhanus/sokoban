@@ -85,6 +85,7 @@ public class SokoView extends View{
     protected boolean move(int offset) {
         Integer index = null;
 
+        // find cat current location
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
                 if (level[i*10 + j] == 4) {
@@ -94,18 +95,27 @@ public class SokoView extends View{
             }
         }
 
+        // check if cat exists in area
         if (index == null) {
             return false;
         }
 
+        // check if destination is in area range
         if (index + offset < 0 || index + offset >= 10 * 10) {
             return false;
         }
 
+        // do not step on the wall
         if (level[index + offset] == 1) {
             return false;
         }
 
+        // if in destination is box then move it
+        if (level[index + offset] == 2) {
+            level[index + offset * 2] = 2;
+        }
+
+        // set new cat location
         level[index + offset] = 4;
         level[index] = 0;
 
