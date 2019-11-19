@@ -134,7 +134,12 @@ public class SokoView extends View{
                 return false;
             }
 
-            level[index + offset * 2] = 2;
+            // if destination is goal then set green box
+            if (level[index + offset * 2] == 3) {
+                level[index + offset * 2] = 5;
+            } else {
+                level[index + offset * 2] = 2;
+            }
         }
 
         // restore block on old cat location
