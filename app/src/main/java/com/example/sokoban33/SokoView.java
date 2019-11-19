@@ -105,6 +105,11 @@ public class SokoView extends View{
             return false;
         }
 
+        // do not step left from left edge
+        if (offset == -1 && index % 10 == 0) {
+            return false;
+        }
+
         // do not step right from right edge
         if (offset == 1 && index % 10 == 9) {
             return false;
