@@ -139,7 +139,14 @@ public class SokoView extends View{
 
         // set new cat location
         level[index + offset] = 4;
-        level[index] = 0;
+
+        // restore block on old cat location
+        if (standingOnGoal) {
+            level[index] = 3;
+            standingOnGoal = false;
+        } else {
+            level[index] = 0;
+        }
 
         invalidate();
 
