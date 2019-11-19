@@ -83,10 +83,14 @@ public class SokoView extends View{
     }
 
     protected boolean move() {
+        int x = 0, y = 0;
+
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
                 if (level[i*10 + j] == 4) {
                     Log.d("catch", "YES!");
+                    x = i;
+                    y = j;
                 }
             }
         }
