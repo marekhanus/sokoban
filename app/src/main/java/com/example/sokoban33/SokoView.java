@@ -127,6 +127,11 @@ public class SokoView extends View{
                 return false;
             }
 
+            // do not move box on the wall
+            if (level[index + offset * 2] == 1) {
+                return false;
+            }
+
             level[index + offset * 2] = 2;
         }
 
