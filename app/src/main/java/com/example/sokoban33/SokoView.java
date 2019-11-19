@@ -105,6 +105,11 @@ public class SokoView extends View{
             return false;
         }
 
+        // do not step right from right edge
+        if (offset == 1 && index % 10 == 9) {
+            return false;
+        }
+
         // do not step on the wall
         if (level[index + offset] == 1) {
             return false;
