@@ -98,6 +98,8 @@ public class SokoView extends View{
             return false;
         }
 
+        invalidate();
+
         return true;
     }
 
