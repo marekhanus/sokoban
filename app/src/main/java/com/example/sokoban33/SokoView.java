@@ -81,6 +81,18 @@ public class SokoView extends View{
 
     }
 
+    protected boolean move() {
+        for (int i = 0; i < lx; i++) {
+            for (int j = 0; j < ly; j++) {
+                if (level[i*10 + j] == 4) {
+                    break;
+                }
+            }
+        }
+
+        return true;
+    }
+
     public boolean moveTop() {
         return true;
     }
