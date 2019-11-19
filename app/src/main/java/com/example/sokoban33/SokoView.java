@@ -115,7 +115,7 @@ public class SokoView extends View{
     }
 
     public boolean moveLeft() {
-        return true;
+        return move(-1);
     }
 
     public boolean moveRight() {
