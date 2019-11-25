@@ -54,15 +54,15 @@ public class SokoView extends View{
         bmp[4] = BitmapFactory.decodeResource(getResources(), R.drawable.hero);
         bmp[5] = BitmapFactory.decodeResource(getResources(), R.drawable.boxok);
 
-        InputStream input = context.getResources().openRawResource(R.raw.level);
+        InputStream inputStream = context.getResources().openRawResource(R.raw.level);
 
         try {
             int current;
-            int length = input.available();
+            int length = inputStream.available();
             level = new int[length];
-            while (input.available() > 0) {
-                current = Integer.parseInt(String.valueOf((char)input.read()));
-                level[length - input.available() - 1] = current;
+            while (inputStream.available() > 0) {
+                current = Integer.parseInt(String.valueOf((char)inputStream.read()));
+                level[length - inputStream.available() - 1] = current;
             }
         } catch (IOException e) {
             e.printStackTrace();
