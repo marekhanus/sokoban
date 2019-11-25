@@ -27,7 +27,7 @@ public class SokoView extends View{
 
     boolean standingOnGoal = false;
 
-    private int level[];
+    private int[] level;
 
     public SokoView(Context context) {
         super(context);
