@@ -8,6 +8,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by kru13 on 12.10.16.
@@ -25,18 +27,7 @@ public class SokoView extends View{
 
     boolean standingOnGoal = false;
 
-    private int level[] = {
-            1,1,1,1,1,1,1,1,1,0,
-            1,0,0,0,0,0,0,0,1,0,
-            1,0,2,3,3,2,1,0,1,0,
-            1,0,1,3,2,3,2,0,1,0,
-            1,0,2,3,3,2,4,0,1,0,
-            1,0,1,3,2,3,2,0,1,0,
-            1,0,2,3,3,2,1,0,1,0,
-            1,0,0,0,0,0,0,0,1,0,
-            1,1,1,1,1,1,1,1,1,0,
-            0,0,0,0,0,0,0,0,0,0
-    };
+    private int level[];
 
     public SokoView(Context context) {
         super(context);
@@ -63,6 +54,19 @@ public class SokoView extends View{
         bmp[4] = BitmapFactory.decodeResource(getResources(), R.drawable.hero);
         bmp[5] = BitmapFactory.decodeResource(getResources(), R.drawable.boxok);
 
+        InputStream input = context.getResources().openRawResource(R.raw.level);
+
+        try {
+            int current;
+            int length = input.available();
+            level = new int[length];
+            while (input.available() > 0) {
+                current = Integer.parseInt(String.valueOf((char)input.read()));
+                level[length - input.available() - 1] = current;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
