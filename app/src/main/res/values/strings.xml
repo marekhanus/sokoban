@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Sokoban33</string>
+
+    <!--  Menu items -->
+    <string name="levels">Levels</string>
 </resources>
