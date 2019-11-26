@@ -61,6 +61,10 @@ public class SokoView extends View{
         level = new int[length];
         while (inputStream.available() > 0) {
             current = String.valueOf((char)inputStream.read());
+            if (current.equals("\n")) {
+                break;
+            }
+
             level[length - inputStream.available() - 1] = Integer.parseInt(current);
         }
     }
