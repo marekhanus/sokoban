@@ -29,22 +29,22 @@ public class SokoView extends View{
 
     private int[] level;
 
-    public SokoView(Context context) {
+    public SokoView(Context context) throws IOException {
         super(context);
         init(context);
     }
 
-    public SokoView(Context context, AttributeSet attrs) {
+    public SokoView(Context context, AttributeSet attrs) throws IOException {
         super(context, attrs);
         init(context);
     }
 
-    public SokoView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SokoView(Context context, AttributeSet attrs, int defStyleAttr) throws IOException {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
-    void init(Context context) {
+    void init(Context context) throws IOException {
         bmp = new Bitmap[6];
 
         bmp[0] = BitmapFactory.decodeResource(getResources(), R.drawable.empty);
@@ -56,16 +56,12 @@ public class SokoView extends View{
 
         InputStream inputStream = context.getResources().openRawResource(R.raw.level);
 
-        try {
-            int current;
-            int length = inputStream.available();
-            level = new int[length];
-            while (inputStream.available() > 0) {
-                current = Integer.parseInt(String.valueOf((char)inputStream.read()));
-                level[length - inputStream.available() - 1] = current;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        int current;
+        int length = inputStream.available();
+        level = new int[length];
+        while (inputStream.available() > 0) {
+            current = Integer.parseInt(String.valueOf((char)inputStream.read()));
+            level[length - inputStream.available() - 1] = current;
         }
     }
 
