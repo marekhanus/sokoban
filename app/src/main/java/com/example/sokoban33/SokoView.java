@@ -144,11 +144,6 @@ public class SokoView extends View{
             } else {
                 level[index + offset * 2] = 2;
             }
-
-            // set cat standing on goal if cat is moved on green box
-            if (level[index + offset] == 5) {
-                standingOnGoal = true;
-            }
         }
 
         // restore block on old cat location
@@ -157,6 +152,11 @@ public class SokoView extends View{
             standingOnGoal = false;
         } else {
             level[index] = 0;
+        }
+
+        // if in destination is green box then set cat standing on goal
+        if (level[index + offset] == 5) {
+            standingOnGoal = true;
         }
 
         // set new cat location
