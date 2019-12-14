@@ -102,7 +102,7 @@ public class SokoView extends View{
         // find cat current location
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
-                if (level[i*10 + j] == 4) {
+                if (level[i*10 + j] == HERO) {
                     currentLocation = i*10 + j;
                     Log.d("catch", String.valueOf(currentLocation));
                 }
@@ -134,45 +134,45 @@ public class SokoView extends View{
         }
 
         // do not step on the wall
-        if (level[destination] == 1) {
+        if (level[destination] == WALL) {
             return false;
         }
 
         // if in destination is box or green box then move it
-        if (level[destination] == 2 || level[destination] == 5) {
+        if (level[destination] == BOX || level[destination] == BOXOK) {
             // check if box destination is in area range
             if (boxLocation < 0 || boxLocation >= 10 * 10) {
                 return false;
             }
 
             // do not move box on the wall or another box
-            if (level[boxLocation] == 1 || level[boxLocation] == 2) {
+            if (level[boxLocation] == WALL || level[boxLocation] == BOX) {
                 return false;
             }
 
             // if destination is goal then set green box
-            if (level[boxLocation] == 3) {
-                level[boxLocation] = 5;
+            if (level[boxLocation] == GOAL) {
+                level[boxLocation] = BOXOK;
             } else {
-                level[boxLocation] = 2;
+                level[boxLocation] = BOX;
             }
         }
 
         // restore block on old cat location
         if (standingOnGoal) {
-            level[currentLocation] = 3;
+            level[currentLocation] = GOAL;
             standingOnGoal = false;
         } else {
-            level[currentLocation] = 0;
+            level[currentLocation] = EMPTY;
         }
 
         // if in destination is box or green box then set cat standing on goal
-        if (level[destination] == 3 || level[destination] == 5) {
+        if (level[destination] == GOAL || level[destination] == BOXOK) {
             standingOnGoal = true;
         }
 
         // set new cat location
-        level[destination] = 4;
+        level[destination] = HERO;
 
         invalidate();
 
