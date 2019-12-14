@@ -4,8 +4,9 @@ Sokoban is a type of puzzle video game, in which the player pushes crates or box
 
 Features:
 
-- [ ] 2D game
+- [x] 2D game
 - [ ] Swipe/tilt gestures
-- [ ] Remote backend on internet for saving and synchronizing content
+- [ ] Levels selection
 - [ ] Download more levels
-- [ ] Online feedback
+- [ ] Create level with OpenCV
+- [ ] Remote backend on internet for saving and synchronizing content
