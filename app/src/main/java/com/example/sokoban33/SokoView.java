@@ -109,7 +109,7 @@ public class SokoView extends View{
         }
 
         // prepare destination array index
-        Integer destination = currentLocation + offset;
+        int destination = currentLocation + offset;
 
         // check if destination is in area range
         if (destination < 0 || destination >= 10 * 10) {
