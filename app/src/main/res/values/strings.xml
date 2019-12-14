@@ -3,4 +3,5 @@
 
     <!--  Menu items -->
     <string name="levels">Levels</string>
+    <string name="customLevel">Create level from picture</string>
 </resources>
