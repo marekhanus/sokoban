@@ -91,78 +91,78 @@ public class SokoView extends View{
     }
 
     protected boolean move(int offset) {
-        Integer index = null;
+        Integer currentLocation = null;
 
         // find cat current location
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
                 if (level[i*10 + j] == 4) {
-                    index = i*10 + j;
-                    Log.d("catch", String.valueOf(index));
+                    currentLocation = i*10 + j;
+                    Log.d("catch", String.valueOf(currentLocation));
                 }
             }
         }
 
         // check if cat exists in area
-        if (index == null) {
+        if (currentLocation == null) {
             return false;
         }
 
         // check if destination is in area range
-        if (index + offset < 0 || index + offset >= 10 * 10) {
+        if (currentLocation + offset < 0 || currentLocation + offset >= 10 * 10) {
             return false;
         }
 
         // do not step left from left edge
-        if (offset == -1 && index % 10 == 0) {
+        if (offset == -1 && currentLocation % 10 == 0) {
             return false;
         }
 
         // do not step right from right edge
-        if (offset == 1 && index % 10 == 9) {
+        if (offset == 1 && currentLocation % 10 == 9) {
             return false;
         }
 
         // do not step on the wall
-        if (level[index + offset] == 1) {
+        if (level[currentLocation + offset] == 1) {
             return false;
         }
 
         // if in destination is box or green box then move it
-        if (level[index + offset] == 2 || level[index + offset] == 5) {
+        if (level[currentLocation + offset] == 2 || level[currentLocation + offset] == 5) {
             // check if box destination is in area range
-            if (index + offset * 2 < 0 || index + offset * 2 >= 10 * 10) {
+            if (currentLocation + offset * 2 < 0 || currentLocation + offset * 2 >= 10 * 10) {
                 return false;
             }
 
             // do not move box on the wall or another box
-            if (level[index + offset * 2] == 1 || level[index + offset * 2] == 2) {
+            if (level[currentLocation + offset * 2] == 1 || level[currentLocation + offset * 2] == 2) {
                 return false;
             }
 
             // if destination is goal then set green box
-            if (level[index + offset * 2] == 3) {
-                level[index + offset * 2] = 5;
+            if (level[currentLocation + offset * 2] == 3) {
+                level[currentLocation + offset * 2] = 5;
             } else {
-                level[index + offset * 2] = 2;
+                level[currentLocation + offset * 2] = 2;
             }
         }
 
         // restore block on old cat location
         if (standingOnGoal) {
-            level[index] = 3;
+            level[currentLocation] = 3;
             standingOnGoal = false;
         } else {
-            level[index] = 0;
+            level[currentLocation] = 0;
         }
 
         // if in destination is box or green box then set cat standing on goal
-        if (level[index + offset] == 3 || level[index + offset] == 5) {
+        if (level[currentLocation + offset] == 3 || level[currentLocation + offset] == 5) {
             standingOnGoal = true;
         }
 
         // set new cat location
-        level[index + offset] = 4;
+        level[currentLocation + offset] = 4;
 
         invalidate();
 
