@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.levels:
-                Intent settingsActivity = new Intent(getBaseContext(), LevelsActivity.class);
-                startActivity(settingsActivity);
+                Intent levelsActivity = new Intent(getBaseContext(), LevelsActivity.class);
+                startActivity(levelsActivity);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
