@@ -108,8 +108,11 @@ public class SokoView extends View{
             return false;
         }
 
+        // prepare destination array index
+        Integer destination = currentLocation + offset;
+
         // check if destination is in area range
-        if (currentLocation + offset < 0 || currentLocation + offset >= 10 * 10) {
+        if (destination < 0 || destination >= 10 * 10) {
             return false;
         }
 
@@ -124,12 +127,12 @@ public class SokoView extends View{
         }
 
         // do not step on the wall
-        if (level[currentLocation + offset] == 1) {
+        if (level[destination] == 1) {
             return false;
         }
 
         // if in destination is box or green box then move it
-        if (level[currentLocation + offset] == 2 || level[currentLocation + offset] == 5) {
+        if (level[destination] == 2 || level[destination] == 5) {
             // check if box destination is in area range
             if (currentLocation + offset * 2 < 0 || currentLocation + offset * 2 >= 10 * 10) {
                 return false;
@@ -157,12 +160,12 @@ public class SokoView extends View{
         }
 
         // if in destination is box or green box then set cat standing on goal
-        if (level[currentLocation + offset] == 3 || level[currentLocation + offset] == 5) {
+        if (level[destination] == 3 || level[destination] == 5) {
             standingOnGoal = true;
         }
 
         // set new cat location
-        level[currentLocation + offset] = 4;
+        level[destination] = 4;
 
         invalidate();
 
