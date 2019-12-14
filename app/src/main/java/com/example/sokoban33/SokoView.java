@@ -154,15 +154,12 @@ public class SokoView extends View{
             level[index] = 0;
         }
 
-        // if in destination is green box then set cat standing on goal
-        if (level[index + offset] == 5) {
+        // if in destination is box or green box then set cat standing on goal
+        if (level[index + offset] == 3 || level[index + offset] == 5) {
             standingOnGoal = true;
         }
 
         // set new cat location
-        if (level[index + offset] == 3) {
-            standingOnGoal = true;
-        }
         level[index + offset] = 4;
 
         invalidate();
