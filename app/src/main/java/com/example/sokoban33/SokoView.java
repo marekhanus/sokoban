@@ -53,12 +53,12 @@ public class SokoView extends View{
     void init(Context context) throws IOException {
         bmp = new Bitmap[6];
 
-        bmp[0] = BitmapFactory.decodeResource(getResources(), R.drawable.empty);
-        bmp[1] = BitmapFactory.decodeResource(getResources(), R.drawable.wall);
-        bmp[2] = BitmapFactory.decodeResource(getResources(), R.drawable.box);
-        bmp[3] = BitmapFactory.decodeResource(getResources(), R.drawable.goal);
-        bmp[4] = BitmapFactory.decodeResource(getResources(), R.drawable.hero);
-        bmp[5] = BitmapFactory.decodeResource(getResources(), R.drawable.boxok);
+        bmp[EMPTY] = BitmapFactory.decodeResource(getResources(), R.drawable.empty);
+        bmp[WALL] = BitmapFactory.decodeResource(getResources(), R.drawable.wall);
+        bmp[BOX] = BitmapFactory.decodeResource(getResources(), R.drawable.box);
+        bmp[GOAL] = BitmapFactory.decodeResource(getResources(), R.drawable.goal);
+        bmp[HERO] = BitmapFactory.decodeResource(getResources(), R.drawable.hero);
+        bmp[BOXOK] = BitmapFactory.decodeResource(getResources(), R.drawable.boxok);
 
         InputStream inputStream = context.getResources().openRawResource(R.raw.level);
 
