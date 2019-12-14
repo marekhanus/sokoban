@@ -17,7 +17,7 @@ public class LevelsActivity extends AppCompatActivity {
         arrayList.add("Sample level");
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_levels, arrayList);
 
-        ListView listView = (ListView)findViewById(R.id.levels_list);
+        ListView listView = findViewById(R.id.levels_list);
         listView.setAdapter(adapter);
     }
 }
