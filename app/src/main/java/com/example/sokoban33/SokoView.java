@@ -110,6 +110,7 @@ public class SokoView extends View{
 
         // prepare destination array index
         int destination = currentLocation + offset;
+        int boxLocation = currentLocation + offset * 2;
 
         // check if destination is in area range
         if (destination < 0 || destination >= 10 * 10) {
@@ -134,20 +135,20 @@ public class SokoView extends View{
         // if in destination is box or green box then move it
         if (level[destination] == 2 || level[destination] == 5) {
             // check if box destination is in area range
-            if (currentLocation + offset * 2 < 0 || currentLocation + offset * 2 >= 10 * 10) {
+            if (boxLocation < 0 || boxLocation >= 10 * 10) {
                 return false;
             }
 
             // do not move box on the wall or another box
-            if (level[currentLocation + offset * 2] == 1 || level[currentLocation + offset * 2] == 2) {
+            if (level[boxLocation] == 1 || level[boxLocation] == 2) {
                 return false;
             }
 
             // if destination is goal then set green box
-            if (level[currentLocation + offset * 2] == 3) {
-                level[currentLocation + offset * 2] = 5;
+            if (level[boxLocation] == 3) {
+                level[boxLocation] = 5;
             } else {
-                level[currentLocation + offset * 2] = 2;
+                level[boxLocation] = 2;
             }
         }
 
