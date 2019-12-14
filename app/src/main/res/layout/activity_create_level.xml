@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".CreateLevelActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="96dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </android.support.constraint.ConstraintLayout>
