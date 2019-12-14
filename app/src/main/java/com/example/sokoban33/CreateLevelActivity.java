@@ -1,6 +1,7 @@
 package com.example.sokoban33;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
@@ -69,8 +70,9 @@ public class CreateLevelActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+            Bitmap imageBitmap = BitmapFactory.decodeFile(currentPhotoPath);
             ImageView imageView = (ImageView) findViewById(R.id.imageView);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(currentPhotoPath));
+            imageView.setImageBitmap(imageBitmap);
         }
     }
 }
