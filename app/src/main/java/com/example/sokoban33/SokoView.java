@@ -80,8 +80,12 @@ public class SokoView extends View{
     protected void onDraw(Canvas canvas) {
         for (int i = 0; i < lx; i++) {
             for (int j = 0; j < ly; j++) {
-                canvas.drawBitmap(bmp[level[i*10 + j]], null,
-                        new Rect(j*width, i*height,(j+1)*width, (i+1)*height), null);
+                canvas.drawBitmap(
+                    bmp[level[i*10 + j]],
+                    null,
+                    new Rect(j*width, i*height,(j+1)*width, (i+1)*height),
+                    null
+                );
             }
         }
     }
