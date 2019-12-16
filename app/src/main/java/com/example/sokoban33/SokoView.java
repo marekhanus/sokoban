@@ -67,7 +67,7 @@ public class SokoView extends View{
         level = new int[length];
         while (inputStream.available() > 0) {
             current = String.valueOf((char)inputStream.read());
-            if (current.equals("\n")) {
+            if (current.equals("\n") || current.equals(";")) {
                 break;
             }
 
