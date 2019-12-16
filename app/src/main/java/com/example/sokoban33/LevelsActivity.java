@@ -23,7 +23,7 @@ public class LevelsActivity extends AppCompatActivity {
 
         InputStream inputStream = getBaseContext().getResources().openRawResource(R.raw.level);
         CSVFile csvFile = new CSVFile(inputStream);
-        List data = csvFile.read();
+        List<String[]> data = csvFile.read();
         for (String[] row : data) {
             arrayList.add(row[1]);
         }
