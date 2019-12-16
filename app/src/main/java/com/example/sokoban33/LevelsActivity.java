@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LevelsActivity extends AppCompatActivity {
 
@@ -17,7 +20,14 @@ public class LevelsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_levels);
 
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Sample level");
+
+        InputStream inputStream = getBaseContext().getResources().openRawResource(R.raw.level);
+        CSVFile csvFile = new CSVFile(inputStream);
+        List data = csvFile.read();
+        for (String[] row : data) {
+            arrayList.add(row[1]);
+        }
+
         ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_levels, arrayList);
 
         ListView listView = findViewById(R.id.levels_list);
