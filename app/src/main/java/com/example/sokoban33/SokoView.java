@@ -1,6 +1,8 @@
 package com.example.sokoban33;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -75,6 +77,17 @@ public class SokoView extends View{
         }
 
         FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "myTitle");
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE, "mySubtitle");
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
     }
 
     void redrawLevel(String levelDefinition) {
