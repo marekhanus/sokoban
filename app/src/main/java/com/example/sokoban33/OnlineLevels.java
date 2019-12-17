@@ -33,6 +33,7 @@ public class OnlineLevels {
                     Log.d("OnlineLevels", e.toString());
                 }
 
+                Log.d("OnlineLevels", urls.get(0));
                 response = urls;
             }
         }).start();
