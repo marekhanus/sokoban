@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    public boolean USE_SWIPE_TOUCH_LISTENER = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,55 +26,57 @@ public class MainActivity extends AppCompatActivity {
             sokoView.redrawLevel(levelDefinition);
         }
 
-        sokoView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                float x = motionEvent.getX();
-                float y = motionEvent.getY();
-                float width = view.getWidth();
-                float height = view.getHeight();
+        if (!USE_SWIPE_TOUCH_LISTENER) {
+            sokoView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    float x = motionEvent.getX();
+                    float y = motionEvent.getY();
+                    float width = view.getWidth();
+                    float height = view.getHeight();
 
-                Log.d("getX", Float.toString(x));
-                Log.d("getY", Float.toString(y));
-                Log.d("sizeX", Float.toString(width));
-                Log.d("sizey", Float.toString(height));
+                    Log.d("getX", Float.toString(x));
+                    Log.d("getY", Float.toString(y));
+                    Log.d("sizeX", Float.toString(width));
+                    Log.d("sizey", Float.toString(height));
 
-                if (y < height * 0.25) {
+                    if (y < height * 0.25) {
+                        Log.d("touchPos", "top");
+                        sokoView.moveTop();
+                    } else if (y > height * 0.75) {
+                        Log.d("touchPos", "bottom");
+                        sokoView.moveBottom();
+                    } else if (x < width / 2) {
+                        Log.d("touchPos", "left");
+                        sokoView.moveLeft();
+                    } else {
+                        Log.d("touchPos", "right");
+                        sokoView.moveRight();
+                    }
+
+                    return false;
+                }
+            });
+        } else {
+            sokoView.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+                public void onSwipeTop() {
                     Log.d("touchPos", "top");
                     sokoView.moveTop();
-                } else if (y > height * 0.75) {
+                }
+                public void onSwipeRight() {
                     Log.d("touchPos", "bottom");
-                    sokoView.moveBottom();
-                } else if (x < width / 2) {
-                    Log.d("touchPos", "left");
-                    sokoView.moveLeft();
-                } else {
-                    Log.d("touchPos", "right");
                     sokoView.moveRight();
                 }
-
-                return false;
-            }
-        });
-
-        sokoView.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-            public void onSwipeTop() {
-                Log.d("touchPos", "top");
-                sokoView.moveTop();
-            }
-            public void onSwipeRight() {
-                Log.d("touchPos", "bottom");
-                sokoView.moveRight();
-            }
-            public void onSwipeLeft() {
-                Log.d("touchPos", "left");
-                sokoView.moveLeft();
-            }
-            public void onSwipeBottom() {
-                Log.d("touchPos", "right");
-                sokoView.moveBottom();
-            }
-        });
+                public void onSwipeLeft() {
+                    Log.d("touchPos", "left");
+                    sokoView.moveLeft();
+                }
+                public void onSwipeBottom() {
+                    Log.d("touchPos", "right");
+                    sokoView.moveBottom();
+                }
+            });
+        }
     }
 
     // Populates the activity's options menu.
