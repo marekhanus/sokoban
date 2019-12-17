@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelsActivity extends AppCompatActivity {
-    private boolean LOAD_ONLINE_LEVELS = false;
+    private boolean LOAD_ONLINE_LEVELS = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,10 @@ public class LevelsActivity extends AppCompatActivity {
 
         if (LOAD_ONLINE_LEVELS) {
             OnlineLevels onlineLevels = new OnlineLevels();
-            onlineLevels.download();
+            List<String[]> data = onlineLevels.download();
+            for (String[] row : data) {
+                arrayList.add(row[1]);
+            }
         } else {
             InputStream inputStream = getBaseContext().getResources().openRawResource(R.raw.level);
             CSVFile csvFile = new CSVFile(inputStream);
