@@ -68,16 +68,23 @@ public class SokoView extends View{
         Intent intent = getIntent("MainActivity");
         String levelDefinition = intent.getStringExtra("LEVEL_DEFINITION");
 
-        String current;
-        int length = inputStream.available();
-        level = new int[length];
-        while (inputStream.available() > 0) {
-            current = String.valueOf((char)inputStream.read());
-            if (current.equals("\n") || current.equals(";")) {
-                break;
-            }
+        if (levelDefinition == null) {
+            String current;
+            int length = inputStream.available();
+            level = new int[length];
+            while (inputStream.available() > 0) {
+                current = String.valueOf((char)inputStream.read());
+                if (current.equals("\n") || current.equals(";")) {
+                    break;
+                }
 
-            level[length - inputStream.available() - 1] = Integer.parseInt(current);
+                level[length - inputStream.available() - 1] = Integer.parseInt(current);
+            }
+        } else {
+            for (int i = 0; i < levelDefinition.length(); i++) {
+                String[] chars = levelDefinition.split(".");
+                level[i] = Integer.parseInt(chars[i]);
+            }
         }
     }
 
