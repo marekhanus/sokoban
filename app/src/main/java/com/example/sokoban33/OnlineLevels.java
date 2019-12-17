@@ -13,7 +13,7 @@ public class OnlineLevels {
     public static List<String[]> resultList = new ArrayList<String[]>();
 
     public List<String[]> download() {
-        new Thread(new Runnable(){
+        Thread t = new Thread(new Runnable(){
             public void run(){
                 try {
                     URL url = new URL("http://marekhanus.cz/tamz_2.txt");
@@ -34,7 +34,15 @@ public class OnlineLevels {
 
                 Log.d("OnlineLevelsOK", resultList.get(0)[1]);
             }
-        }).start();
+        });
+
+        t.start();
+
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            Log.d("OnlineLevelsERR", e.toString());
+        }
 
         return resultList;
     }
