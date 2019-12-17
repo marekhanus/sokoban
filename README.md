@@ -11,3 +11,4 @@ Features:
 - [ ] ~Create level with OpenCV (load image, threshold, ...)~
 - [ ] Remote backend on internet for saving and synchronizing content
 - [x] Play game sounds
+- [ ] Save instance do SQLite
