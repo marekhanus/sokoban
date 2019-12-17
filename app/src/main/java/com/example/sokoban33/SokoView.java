@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -180,6 +181,10 @@ public class SokoView extends View{
         level[destination] = HERO;
 
         invalidate();
+
+        // play 440 Hz sound
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.sound);
+        mp.start();
 
         return true;
     }
