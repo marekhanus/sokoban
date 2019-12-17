@@ -20,25 +20,28 @@ public class LevelsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
 
-        ArrayList<String> arrayList = new ArrayList<>();
+        ArrayList<String> levelDefinition = new ArrayList<>();
+        ArrayList<String> levelNames = new ArrayList<>();
 
 
         if (LOAD_ONLINE_LEVELS) {
             OnlineLevels onlineLevels = new OnlineLevels();
             List<String[]> data = onlineLevels.download();
             for (String[] row : data) {
-                arrayList.add(row[1]);
+                levelDefinition.add(row[0]);
+                levelNames.add(row[1]);
             }
         } else {
             InputStream inputStream = getBaseContext().getResources().openRawResource(R.raw.level);
             CSVFile csvFile = new CSVFile(inputStream);
             List<String[]> data = csvFile.read();
             for (String[] row : data) {
-                arrayList.add(row[1]);
+                levelDefinition.add(row[0]);
+                levelNames.add(row[1]);
             }
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_levels, arrayList);
+        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_levels, levelNames);
 
         ListView listView = findViewById(R.id.levels_list);
         listView.setAdapter(adapter);
