@@ -236,6 +236,13 @@ public class SokoView extends View{
         // Gets the data repository in write mode
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        // Define 'where' part of query.
+        String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE + " LIKE ?";
+        // Specify arguments in placeholder order.
+        String[] selectionArgs = { "MyTitle" };
+        // Issue SQL statement.
+        int deletedRows = db.delete(FeedReaderContract.FeedEntry.TABLE_NAME, selection, selectionArgs);
+
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "myTitle");
