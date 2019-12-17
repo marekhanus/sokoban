@@ -20,7 +20,7 @@ public class LevelsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
 
-        ArrayList<String> levelDefinition = new ArrayList<>();
+        final ArrayList<String> levelDefinition = new ArrayList<>();
         ArrayList<String> levelNames = new ArrayList<>();
 
 
@@ -50,6 +50,7 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent myIntent = new Intent(getBaseContext(), MainActivity.class);
+                myIntent.putExtra("LEVEL_DEFINITION", levelDefinition.get(i));
                 startActivity(myIntent);
             }
         });
