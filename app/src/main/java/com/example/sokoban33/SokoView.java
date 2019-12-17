@@ -76,8 +76,7 @@ public class SokoView extends View{
 
     void redrawLevel(String levelDefinition) {
         for (int i = 0; i < levelDefinition.length(); i++) {
-            String[] chars = levelDefinition.split(".");
-            level[i] = Integer.parseInt(chars[i]);
+            level[i] = (int)levelDefinition.charAt(i);
         }
     }
 
