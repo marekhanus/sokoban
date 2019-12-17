@@ -18,6 +18,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final SokoView sokoView = findViewById(R.id.sokoView);
+
+        Intent intent = getIntent();
+        String levelDefinition = intent.getStringExtra("LEVEL_DEFINITION");
+        if (levelDefinition != null) {
+            sokoView.redrawLevel(levelDefinition);
+        }
+
         sokoView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {

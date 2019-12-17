@@ -1,7 +1,6 @@
 package com.example.sokoban33;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,9 +10,6 @@ import android.util.Log;
 import android.view.View;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
-
-import static android.content.Intent.getIntent;
 
 /**
  * Created by kru13 on 12.10.16.
@@ -39,22 +35,22 @@ public class SokoView extends View{
 
     private int[] level;
 
-    public SokoView(Context context) throws IOException, URISyntaxException {
+    public SokoView(Context context) throws IOException {
         super(context);
         init(context);
     }
 
-    public SokoView(Context context, AttributeSet attrs) throws IOException, URISyntaxException {
+    public SokoView(Context context, AttributeSet attrs) throws IOException {
         super(context, attrs);
         init(context);
     }
 
-    public SokoView(Context context, AttributeSet attrs, int defStyleAttr) throws IOException, URISyntaxException {
+    public SokoView(Context context, AttributeSet attrs, int defStyleAttr) throws IOException {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
-    void init(Context context) throws IOException, URISyntaxException {
+    void init(Context context) throws IOException {
         bmp = new Bitmap[6];
 
         bmp[EMPTY] = BitmapFactory.decodeResource(getResources(), R.drawable.empty);
@@ -65,26 +61,23 @@ public class SokoView extends View{
         bmp[BOXOK] = BitmapFactory.decodeResource(getResources(), R.drawable.boxok);
 
         InputStream inputStream = context.getResources().openRawResource(R.raw.level);
-        Intent intent = getIntent("MainActivity");
-        String levelDefinition = intent.getStringExtra("LEVEL_DEFINITION");
-
-        if (levelDefinition == null) {
-            String current;
-            int length = inputStream.available();
-            level = new int[length];
-            while (inputStream.available() > 0) {
-                current = String.valueOf((char)inputStream.read());
-                if (current.equals("\n") || current.equals(";")) {
-                    break;
-                }
-
-                level[length - inputStream.available() - 1] = Integer.parseInt(current);
+        String current;
+        int length = inputStream.available();
+        level = new int[length];
+        while (inputStream.available() > 0) {
+            current = String.valueOf((char)inputStream.read());
+            if (current.equals("\n") || current.equals(";")) {
+                break;
             }
-        } else {
-            for (int i = 0; i < levelDefinition.length(); i++) {
-                String[] chars = levelDefinition.split(".");
-                level[i] = Integer.parseInt(chars[i]);
-            }
+
+            level[length - inputStream.available() - 1] = Integer.parseInt(current);
+        }
+    }
+
+    void redrawLevel(String levelDefinition) {
+        for (int i = 0; i < levelDefinition.length(); i++) {
+            String[] chars = levelDefinition.split(".");
+            level[i] = Integer.parseInt(chars[i]);
         }
     }
 
