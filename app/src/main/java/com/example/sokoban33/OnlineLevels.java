@@ -10,9 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnlineLevels {
-    public static List<String[]> resultList = new ArrayList<String[]>();
+    public static List<String[]> resultList;
 
     public List<String[]> download() {
+        resultList = new ArrayList<String[]>();
         Thread t = new Thread(new Runnable(){
             public void run(){
                 try {
