@@ -180,6 +180,7 @@ public class SokoView extends View{
         // set new cat location
         level[destination] = HERO;
 
+        // redraw view
         invalidate();
 
         // play 440 Hz sound
