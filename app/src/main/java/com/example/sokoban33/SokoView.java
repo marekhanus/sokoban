@@ -1,6 +1,7 @@
 package com.example.sokoban33;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -10,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+
+import static android.content.Intent.getIntent;
 
 /**
  * Created by kru13 on 12.10.16.
@@ -35,22 +39,22 @@ public class SokoView extends View{
 
     private int[] level;
 
-    public SokoView(Context context) throws IOException {
+    public SokoView(Context context) throws IOException, URISyntaxException {
         super(context);
         init(context);
     }
 
-    public SokoView(Context context, AttributeSet attrs) throws IOException {
+    public SokoView(Context context, AttributeSet attrs) throws IOException, URISyntaxException {
         super(context, attrs);
         init(context);
     }
 
-    public SokoView(Context context, AttributeSet attrs, int defStyleAttr) throws IOException {
+    public SokoView(Context context, AttributeSet attrs, int defStyleAttr) throws IOException, URISyntaxException {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
-    void init(Context context) throws IOException {
+    void init(Context context) throws IOException, URISyntaxException {
         bmp = new Bitmap[6];
 
         bmp[EMPTY] = BitmapFactory.decodeResource(getResources(), R.drawable.empty);
@@ -61,6 +65,8 @@ public class SokoView extends View{
         bmp[BOXOK] = BitmapFactory.decodeResource(getResources(), R.drawable.boxok);
 
         InputStream inputStream = context.getResources().openRawResource(R.raw.level);
+        Intent intent = getIntent("MainActivity");
+        String levelDefinition = intent.getStringExtra("LEVEL_DEFINITION");
 
         String current;
         int length = inputStream.available();
