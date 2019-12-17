@@ -30,10 +30,10 @@ public class OnlineLevels {
                     }
                     in.close();
                 } catch (Exception e) {
-                    Log.d("OnlineLevels", e.toString());
+                    Log.d("OnlineLevelsERR", e.toString());
                 }
 
-                Log.d("OnlineLevels", urls.get(0));
+                Log.d("OnlineLevelsOK", urls.get(0));
                 response = urls;
             }
         }).start();
