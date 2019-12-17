@@ -75,17 +75,16 @@ public class SokoView extends View{
         // you will actually use after this query.
         String[] projection = {
                 BaseColumns._ID,
-                FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,
-                FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE
+                FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL,
         };
 
         // Filter results WHERE "title" = 'My Title'
-        String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE + " = ?";
+        String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL + " = ?";
         String[] selectionArgs = { "My Title" };
 
         // How you want the results sorted in the resulting Cursor
         String sortOrder =
-                FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
+                FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL + " DESC";
 
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
@@ -100,7 +99,7 @@ public class SokoView extends View{
         List itemIds = new ArrayList<>();
         while(cursor.moveToNext()) {
             long itemId = cursor.getLong(
-                    cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID));
+                    cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL));
             itemIds.add(itemId);
         }
         cursor.close();
@@ -237,7 +236,7 @@ public class SokoView extends View{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // Define 'where' part of query.
-        String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE + " LIKE ?";
+        String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL + " LIKE ?";
         // Specify arguments in placeholder order.
         String[] selectionArgs = { "MyTitle" };
         // Issue SQL statement.
@@ -245,8 +244,7 @@ public class SokoView extends View{
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "myTitle");
-        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE, "mySubtitle");
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL, "myLevel");
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
