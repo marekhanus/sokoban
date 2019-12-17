@@ -26,7 +26,26 @@ public class MainActivity extends AppCompatActivity {
             sokoView.redrawLevel(levelDefinition);
         }
 
-        if (!USE_SWIPE_TOUCH_LISTENER) {
+        if (USE_SWIPE_TOUCH_LISTENER) {
+            sokoView.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+                public void onSwipeTop() {
+                    Log.d("touchPos", "top");
+                    sokoView.moveTop();
+                }
+                public void onSwipeRight() {
+                    Log.d("touchPos", "bottom");
+                    sokoView.moveRight();
+                }
+                public void onSwipeLeft() {
+                    Log.d("touchPos", "left");
+                    sokoView.moveLeft();
+                }
+                public void onSwipeBottom() {
+                    Log.d("touchPos", "right");
+                    sokoView.moveBottom();
+                }
+            });
+        } else {
             sokoView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -55,25 +74,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     return false;
-                }
-            });
-        } else {
-            sokoView.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-                public void onSwipeTop() {
-                    Log.d("touchPos", "top");
-                    sokoView.moveTop();
-                }
-                public void onSwipeRight() {
-                    Log.d("touchPos", "bottom");
-                    sokoView.moveRight();
-                }
-                public void onSwipeLeft() {
-                    Log.d("touchPos", "left");
-                    sokoView.moveLeft();
-                }
-                public void onSwipeBottom() {
-                    Log.d("touchPos", "right");
-                    sokoView.moveBottom();
                 }
             });
         }
