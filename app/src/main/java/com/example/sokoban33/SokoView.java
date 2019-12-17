@@ -73,6 +73,8 @@ public class SokoView extends View{
 
             level[length - inputStream.available() - 1] = Integer.parseInt(current);
         }
+
+        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
     }
 
     void redrawLevel(String levelDefinition) {
