@@ -75,19 +75,6 @@ public class SokoView extends View{
 
             level[length - inputStream.available() - 1] = Integer.parseInt(current);
         }
-
-        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
-
-        // Gets the data repository in write mode
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "myTitle");
-        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE, "mySubtitle");
-
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
     }
 
     void redrawLevel(String levelDefinition) {
@@ -201,6 +188,19 @@ public class SokoView extends View{
         // play 440 Hz sound
         MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.sound);
         mp.start();
+
+        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "myTitle");
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE, "mySubtitle");
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
 
         return true;
     }
