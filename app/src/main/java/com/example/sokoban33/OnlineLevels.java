@@ -10,13 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnlineLevels {
-    public static List<String> response;
+    public static List<String[]> resultList = new ArrayList<String[]>();
 
-    public List<String> download() {
+    public List<String[]> download() {
         new Thread(new Runnable(){
             public void run(){
-                final List<String> urls = new ArrayList<String>();
-
                 try {
                     URL url = new URL("http://marekhanus.cz/tamz_2.txt");
                     HttpURLConnection conn=(HttpURLConnection) url.openConnection();
@@ -26,18 +24,18 @@ public class OnlineLevels {
 
                     String str;
                     while ((str = in.readLine()) != null) {
-                        urls.add(str);
+                        String[] row = str.split(";");
+                        resultList.add(row);
                     }
                     in.close();
                 } catch (Exception e) {
                     Log.d("OnlineLevelsERR", e.toString());
                 }
 
-                Log.d("OnlineLevelsOK", urls.get(0));
-                response = urls;
+                Log.d("OnlineLevelsOK", resultList.get(0)[1]);
             }
         }).start();
 
-        return response;
+        return resultList;
     }
 }
