@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kru13 on 12.10.16.
@@ -94,6 +96,14 @@ public class SokoView extends View{
                 null,                   // don't filter by row groups
                 sortOrder               // The sort order
         );
+
+        List itemIds = new ArrayList<>();
+        while(cursor.moveToNext()) {
+            long itemId = cursor.getLong(
+                    cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID));
+            itemIds.add(itemId);
+        }
+        cursor.close();
 
         InputStream inputStream = context.getResources().openRawResource(R.raw.level);
         String current;
