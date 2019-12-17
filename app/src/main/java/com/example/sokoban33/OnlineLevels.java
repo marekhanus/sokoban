@@ -7,14 +7,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OnlineLevels {
-    public static String response;
+    public static List<String> response;
 
-    public String download() {
+    public List<String> download() {
         new Thread(new Runnable(){
             public void run(){
-                final ArrayList<String> urls=new ArrayList<String>();
+                final List<String> urls = new ArrayList<String>();
 
                 try {
                     URL url = new URL("http://marekhanus.cz/tamz_2.txt");
@@ -32,7 +33,7 @@ public class OnlineLevels {
                     Log.d("OnlineLevels", e.toString());
                 }
 
-                response = urls.get(0);
+                response = urls;
             }
         }).start();
 
