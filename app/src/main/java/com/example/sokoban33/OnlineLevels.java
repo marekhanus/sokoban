@@ -17,7 +17,7 @@ public class OnlineLevels {
                 final ArrayList<String> urls=new ArrayList<String>();
 
                 try {
-                    URL url = new URL("http://marekhanus.cz/");
+                    URL url = new URL("http://marekhanus.cz/tamz_2.txt");
                     HttpURLConnection conn=(HttpURLConnection) url.openConnection();
                     conn.setConnectTimeout(60000);
 
