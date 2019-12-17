@@ -2,12 +2,14 @@ package com.example.sokoban33;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.media.MediaPlayer;
+import android.provider.BaseColumns;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -62,6 +64,36 @@ public class SokoView extends View{
         bmp[GOAL] = BitmapFactory.decodeResource(getResources(), R.drawable.goal);
         bmp[HERO] = BitmapFactory.decodeResource(getResources(), R.drawable.hero);
         bmp[BOXOK] = BitmapFactory.decodeResource(getResources(), R.drawable.boxok);
+
+        FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Define a projection that specifies which columns from the database
+        // you will actually use after this query.
+        String[] projection = {
+                BaseColumns._ID,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,
+                FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE
+        };
+
+        // Filter results WHERE "title" = 'My Title'
+        String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE + " = ?";
+        String[] selectionArgs = { "My Title" };
+
+        // How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE + " DESC";
+
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
 
         InputStream inputStream = context.getResources().openRawResource(R.raw.level);
         String current;
