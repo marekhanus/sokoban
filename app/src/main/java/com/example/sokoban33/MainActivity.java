@@ -12,8 +12,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    public boolean USE_SWIPE_TOUCH_LISTENER = true;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         boolean sound = preferences.getBoolean("sound", true);
         sokoView.setSound(sound);
 
-        if (USE_SWIPE_TOUCH_LISTENER) {
+        boolean use_swipe_touch_listener = preferences.getBoolean("swipe_touch", true);
+        if (use_swipe_touch_listener) {
             sokoView.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
                 public void onSwipeTop() {
                     Log.d("touchPos", "top");
