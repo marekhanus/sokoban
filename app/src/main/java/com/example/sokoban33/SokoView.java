@@ -126,6 +126,10 @@ public class SokoView extends View{
         }
     }
 
+    public void setSound(boolean sound) {
+        ENABLE_SOUNDS = sound;
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         width = w / ly;
