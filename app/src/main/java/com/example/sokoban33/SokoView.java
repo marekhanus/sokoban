@@ -104,7 +104,8 @@ public class SokoView extends View{
             long itemId = cursor.getLong(
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL));
             itemIds.add(itemId);
-            Log.d("LEVEL_STATE_SAVED", cursor.getString(1));
+            String levelState = cursor.getString(1);
+            Log.d("LEVEL_STATE_SAVED", levelState);
         }
         cursor.close();
 
