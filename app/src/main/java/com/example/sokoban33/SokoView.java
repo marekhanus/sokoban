@@ -40,6 +40,8 @@ public class SokoView extends View{
 
     boolean standingOnGoal = false;
 
+    private boolean ENABLE_SOUNDS = true;
+
     private int[] level;
 
     public SokoView(Context context) throws IOException {
