@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.settings:
                 Intent settingsActivity = new Intent(getBaseContext(), SettingsActivity.class);
                 startActivity(settingsActivity);
+            case R.id.back:
+                // TODO:
             default:
                 return super.onOptionsItemSelected(item);
         }
