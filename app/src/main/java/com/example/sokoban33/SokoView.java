@@ -145,6 +145,19 @@ public class SokoView extends View{
         }
     }
 
+    public String myJoin(int[] arr, String separator) {
+        if (null == arr || 0 == arr.length) return "";
+
+        StringBuilder sb = new StringBuilder(256);
+        sb.append(arr[0]);
+
+        //if (arr.length == 1) return sb.toString();
+
+        for (int i = 1; i < arr.length; i++) sb.append(separator).append(arr[i]);
+
+        return sb.toString();
+    }
+
     protected boolean move(int offset) {
         Integer currentLocation = null;
 
@@ -244,7 +257,7 @@ public class SokoView extends View{
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL, "myLevel");
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL, myJoin(level, ""));
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
