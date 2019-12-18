@@ -99,6 +99,7 @@ public class SokoView extends View{
         );
 
         List itemIds = new ArrayList<>();
+        Log.d("LEVEL_STATE_SAVED_COUNT", String.valueOf(cursor.getCount()));
         while(cursor.moveToNext()) {
             long itemId = cursor.getLong(
                     cursor.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL));
