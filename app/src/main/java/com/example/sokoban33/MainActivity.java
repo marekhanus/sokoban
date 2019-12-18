@@ -1,6 +1,7 @@
 package com.example.sokoban33;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
         if (levelDefinition != null) {
             sokoView.redrawLevel(levelDefinition);
         }
+
+        SharedPreferences preferences = getSharedPreferences(
+                "com.example.sokoban33",
+                android.content.Context.MODE_PRIVATE
+        );
+        boolean sound = preferences.getBoolean("sound", true);
+        sokoView.setSound(sound);
 
         if (USE_SWIPE_TOUCH_LISTENER) {
             sokoView.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
