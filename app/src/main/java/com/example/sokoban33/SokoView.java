@@ -274,6 +274,7 @@ public class SokoView extends View{
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_NAME, null, values);
+        Log.d("LEVEL_STATE", myJoin(level, ""));
 
         return true;
     }
