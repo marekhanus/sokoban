@@ -240,7 +240,7 @@ public class SokoView extends View{
         invalidate();
 
         // play 440 Hz sound
-        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.sound);
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.ding);
         mp.start();
 
         FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
