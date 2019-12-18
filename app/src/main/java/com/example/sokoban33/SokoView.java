@@ -215,6 +215,9 @@ public class SokoView extends View{
             // if destination is goal then set green box
             if (level[boxLocation] == GOAL) {
                 level[boxLocation] = BOXOK;
+
+                MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.sound);
+                mp.start();
             } else {
                 level[boxLocation] = BOX;
             }
