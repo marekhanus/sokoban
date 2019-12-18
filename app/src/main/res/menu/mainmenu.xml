@@ -23,4 +23,6 @@
         android:title="@string/customLevel" />
     <item android:id="@+id/settings"
         android:title="@string/settings" />
+    <item android:id="@+id/back"
+        android:title="@string/back" />
 </menu>
