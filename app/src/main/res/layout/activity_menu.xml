@@ -10,9 +10,9 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="60dp"
-        android:text="Button"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="48dp"
+        android:text="Nová hra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,9 +20,9 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="136dp"
-        android:text="Button"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="120dp"
+        android:text="Levely"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,9 +30,9 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="220dp"
-        android:text="Button"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="192dp"
+        android:text="Nastavení"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
