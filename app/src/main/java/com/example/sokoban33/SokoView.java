@@ -218,8 +218,10 @@ public class SokoView extends View{
             if (level[boxLocation] == GOAL) {
                 level[boxLocation] = BOXOK;
 
-                MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.sound);
-                mp.start();
+                if (ENABLE_SOUNDS) {
+                    MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.sound);
+                    mp.start();
+                }
             } else {
                 level[boxLocation] = BOX;
             }
@@ -244,9 +246,11 @@ public class SokoView extends View{
         // redraw view
         invalidate();
 
-        // play 440 Hz sound
-        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.ding);
-        mp.start();
+        // play 440 Hz sound if enabled
+        if (ENABLE_SOUNDS) {
+            MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.ding);
+            mp.start();
+        }
 
         FeedReaderDbHelper dbHelper = new FeedReaderDbHelper(getContext());
 
