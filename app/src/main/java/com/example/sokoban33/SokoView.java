@@ -86,7 +86,7 @@ public class SokoView extends View{
 
         // How you want the results sorted in the resulting Cursor
         String sortOrder =
-                FeedReaderContract.FeedEntry.COLUMN_NAME_LEVEL + " DESC";
+                FeedReaderContract.FeedEntry._ID + " DESC";
 
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry.TABLE_NAME,   // The table to query
