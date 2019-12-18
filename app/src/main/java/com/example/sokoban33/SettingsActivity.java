@@ -32,5 +32,22 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.commit();
             }
         });
+
+        boolean swipeTouch = preferences.getBoolean("swipe_touch", true);
+
+        Switch swipeTouchSwitch = findViewById(R.id.switch2);
+        swipeTouchSwitch.setChecked(swipeTouch);
+        swipeTouchSwitch.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                SharedPreferences preferences = getApplicationContext().getSharedPreferences(
+                        "com.example.sokoban33",
+                        android.content.Context.MODE_PRIVATE
+                );
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("swipe_touch", b);
+                editor.commit();
+            }
+        });
     }
 }
