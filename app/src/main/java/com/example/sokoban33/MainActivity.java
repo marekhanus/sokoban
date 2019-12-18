@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.customLevel:
                 Intent createLevelActivity = new Intent(getBaseContext(), CreateLevelActivity.class);
                 startActivity(createLevelActivity);
+            case R.id.settings:
+                Intent settingsActivity = new Intent(getBaseContext(), SettingsActivity.class);
+                startActivity(settingsActivity);
             default:
                 return super.onOptionsItemSelected(item);
         }
