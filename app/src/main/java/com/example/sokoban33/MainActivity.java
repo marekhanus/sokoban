@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+        Intent menuActivity = new Intent(getBaseContext(), MenuActivity.class);
+        startActivity(menuActivity);
     }
 
     // Populates the activity's options menu.
