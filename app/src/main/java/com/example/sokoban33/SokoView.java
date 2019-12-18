@@ -106,6 +106,8 @@ public class SokoView extends View{
             itemIds.add(itemId);
             String levelState = cursor.getString(1);
             Log.d("LEVEL_STATE_SAVED", levelState);
+            redrawLevel(levelState);
+            return;
         }
         cursor.close();
 
