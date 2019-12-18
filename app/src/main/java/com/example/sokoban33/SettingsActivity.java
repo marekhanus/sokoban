@@ -12,7 +12,14 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        SharedPreferences preferences = getSharedPreferences(
+                "com.example.sokoban33",
+                android.content.Context.MODE_PRIVATE
+        );
+        boolean sound = preferences.getBoolean("sound", true);
+
         Switch soundSwitch = findViewById(R.id.switch1);
+        soundSwitch.setChecked(sound);
         soundSwitch.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
